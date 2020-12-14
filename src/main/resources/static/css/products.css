@@ -1,0 +1,50 @@
+.box{
+    position: relative;
+    display: inline-block; /* Make the width of box same as image */
+}
+.box .text {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 40%; /* Adjust this value to move the positioned div up and down */
+    text-align: center;
+    width: 60%; /* Set the width of the positioned div */
+    display: block;
+    margin-left: 30px;
+    margin-right: auto;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+h10{
+    text-align: center;
+    margin-left: 5px;
+    margin-right: auto;
+    font-size: 2rem;
+    line-height: 5rem;
+}
+
+.product-box{
+    width: 80%;
+    margin: 20px auto;
+}
+
+.model-box{
+    text-align: center;
+    margin-left: 100px;
+    font-size: 2rem;
+    line-height: 5rem;
+    text-align: center;
+}
+
+.info-box div{
+    display: inline-block;
+    margin-left: 150px;
+    text-align: center;
+}

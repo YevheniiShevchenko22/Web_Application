@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Iphone Store</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/store.css">
+
+<!-- script
+================================================== -->
+<script src="js/modernizr.js"></script>
+<script src="js/pace.min.js"></script>
+
+<!-- favicons
+ ================================================== -->
+<link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+<div th:replace="fragm.html :: header"></div>
+<div th:replace="fragm.html :: home"></div>
+
+<!-- portfolio
+  ================================================== -->
+<section id="portfolio">
+
+    <div class="intro-wrap">
+
+        <div class="row narrow section-intro with-bottom-sep animate-this">
+            <div class="col-twelve">
+                <h1>See Our Products.</h1>
+
+                <p class="lead">If you order now you have delivery for free.</p>
+            </div>
+        </div> <!-- end row section-intro -->
+
+    </div> <!-- end intro-wrap -->
+
+    <div id="products">
+
+        <th:block th:each="product : ${products}">
+            <div class="product">
+                <div th:text="${product.name}"></div>
+                <div th:text="${product.codeEAN}"></div>
+                <div th:text="${product.amount}"></div>
+<!--                <img class="pic" th:src="@{${product.imp}}" width="120"/>-->
+            </div>
+        </th:block>
+    </div>
+
+</section>  <!-- end portfolio -->
+
+
+<div th:replace="fragm.html :: footer"></div>
+
+<div id="preloader">
+    <div id="loader"></div>
+</div>
+
+<!-- Java Script
+================================================== -->
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
