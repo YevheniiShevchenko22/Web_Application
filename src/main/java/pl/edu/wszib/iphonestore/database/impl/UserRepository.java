@@ -23,13 +23,13 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public boolean authenticate(User user) {
+    public User authenticate(User user) {
         for (User userFromDB : this.users) {
             if (userFromDB.getLogin().equals(user.getLogin())
                 && userFromDB.getPass().equals(user.getPass())){
-                return true;
+                return userFromDB;
             }
         }
-        return false;
+        return null;
     }
 }

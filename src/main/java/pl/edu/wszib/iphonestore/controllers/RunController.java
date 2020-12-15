@@ -9,7 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.edu.wszib.iphonestore.database.IStoreRepository;
 import pl.edu.wszib.iphonestore.model.Product;
+import pl.edu.wszib.iphonestore.session.SessionObject;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,13 +30,17 @@ public class RunController {
     @Autowired
     IStoreRepository storeRepository;
 
+    @Resource
+    SessionObject sessionObject;
+
     @GetMapping("/")
     public String landingPage(){
         return "redirect:main";
     }
 
     @GetMapping("/main")
-    public String main(){
+    public String main(Model model){
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "main";
     }
 
@@ -42,11 +48,13 @@ public class RunController {
     public String product(Model model){
         List<Product> products = this.storeRepository.getAllProduct();
         model.addAttribute("products", products);
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "product";
     }
 
     @GetMapping("/about")
-    public String about(){
+    public String about(Model model){
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "about";
     }
 
@@ -54,11 +62,13 @@ public class RunController {
     public String store(Model model){
         List<Product> products = this.storeRepository.getAllProduct();
         model.addAttribute("products", products);
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "store";
     }
 
     @GetMapping("/contact")
-    public String contact(){
+    public String contact(Model model){
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "contact";
     }
 

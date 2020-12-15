@@ -32,7 +32,8 @@
             <li><a class="scrolleasy" href="/about" title="">About</a></li>
             <li><a class="scrolleasy" href="/store" title="">Our Store</a></li>
             <li><a class="scrolleasy" href="/contact" title="">Contact</a></li>
-            <li><a class="scrolleasy" href="/login" title="">Login</a></li>
+            <li><a class="scrolleasy" href="/logout" title="" th:if="${isLogged == true}">Logout</a></li>
+            <li><a class="scrolleasy" href="/login" title="" th:if="${isLogged == false}">Login</a></li>
         </ul>
 
         <p class="sponsor-text">

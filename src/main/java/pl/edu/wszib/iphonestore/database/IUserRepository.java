@@ -7,5 +7,5 @@ import pl.edu.wszib.iphonestore.model.User;
  * Project name: iphonestore
  **/
 public interface IUserRepository {
-    boolean authenticate(User user);
+    User authenticate(User user);
 }
