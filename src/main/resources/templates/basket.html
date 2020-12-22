@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/vendor.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/store.css">
+<link rel="stylesheet" href="css/product.css">
 
 <!-- script
 ================================================== -->
@@ -41,36 +41,30 @@
 <div th:replace="fragm.html :: header"></div>
 <div th:replace="fragm.html :: home"></div>
 
-<!-- portfolio
-  ================================================== -->
-<section id="portfolio">
-
-    <div class="intro-wrap">
-
-        <div class="row narrow section-intro with-bottom-sep animate-this">
-            <div class="col-twelve">
-                <h1>See Our Products.</h1>
-
-                <p class="lead">If you order now you have delivery for free.</p>
-            </div>
-        </div> <!-- end row section-intro -->
-
-    </div> <!-- end intro-wrap -->
-
-    <div id="products">
-
-        <th:block th:each="product : ${products}">
-            <div class="product">
-                <div th:text="${product.name}"></div>
-                <div th:text="${product.codeEAN}"></div>
-                <div th:text="${product.amount}"></div>
-<!--                <img class="pic" th:src="@{${product.imp}}" width="120"/>-->
-            </div>
-        </th:block>
-    </div>
-
-</section>  <!-- end portfolio -->
-
+<table id="basket-table">
+    <thead class="table-head">
+    <tr>
+        <td class="model">Model</td>
+        <td class="amount">Amount</td>
+        <td class="price">Price per one</td>
+        <td class="total">Price</td>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <tr class="box" th:each="product : ${products}">
+        <td><span class="model" th:text="${product.name}" ></span></td>
+        <td><span class="amount" th:text="${product.amount}"></span></td>
+        <td><span class="price" th:text="${product.price} + ' $'"></span></td>
+        <td><span class="total" th:text="${product.amount*product.price} + ' $'"></span></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td th:text="${total} + ' $'"></td>
+    </tr>
+    </tbody>
+</table>
 
 <div th:replace="fragm.html :: footer"></div>
 

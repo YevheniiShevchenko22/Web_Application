@@ -65,9 +65,9 @@ html, body {
 body {
   background: #111111;
   font-family: "librebaskerville-regular", serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 3rem;
-  color: #353535;
+  color: aquamarine;
   margin: 0;
   padding: 0;
 }
@@ -419,15 +419,16 @@ img.pull-left {
  * ------------------------------------------------------------------- */
 table {
   border-width: 0;
-  width: 100%;
-  max-width: 100%;
+  width: 80%;
+  margin: auto auto;
+  max-width: 80%;
   font-family: "librebaskerville-regular", sans-serif;
 }
 
 th,
 td {
   padding: 1.5rem 3rem;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #E8E8E8;
 }
 
@@ -440,10 +441,10 @@ td {
   line-height: 1.5;
 }
 
-th:first-child,
+/*th:first-child,
 td:first-child {
-  padding-left: 0;
-}
+  padding-left: 2rem;
+}*/
 
 th:last-child,
 td:last-child {
@@ -1409,7 +1410,7 @@ header .header-logo a {
 #menu-nav-wrap .nav-list li a:focus {
   color: white;
 }
-#menu-nav-wrap .header-social-list {
+#menu-nav-wrap .animate-intro {
   list-style: none;
   display: inline-block;
   margin: 0;
@@ -2993,3 +2994,5 @@ footer h4.h05::after {
     display: none;
   }
 }
+
+

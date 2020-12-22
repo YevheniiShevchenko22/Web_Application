@@ -17,16 +17,18 @@ public class Product {
     private String codeEAN;
     private Integer amount;
     private String pic;
+    private double price;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String codeEAN, Integer amount, String pic) {
+    public Product(Integer id, String name, String codeEAN, Integer amount, String pic, double price) {
         this.id = id;
         this.name = name;
         this.codeEAN = codeEAN;
         this.amount = amount;
         this.pic = pic;
+        this.price = price;
     }
 
     public String getName() {
@@ -53,14 +55,6 @@ public class Product {
         this.amount = amount;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getPic() {
         return pic;
     }
@@ -69,10 +63,30 @@ public class Product {
         this.pic = pic;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Transient
     public String getPhotosImagePath() {
         if (pic == null || id == null) return null;
 
         return "/images/portfolio/" + id + "/" + pic;
+    }
+
+    public Product clone(){
+        return new Product(this.id,this.name, this.codeEAN, this.amount, this.pic, this.price);
     }
 }

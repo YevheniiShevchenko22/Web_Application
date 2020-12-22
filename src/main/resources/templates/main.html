@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="css/products.css">
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
@@ -36,6 +36,24 @@
 
 <div th:replace="fragm.html :: header"></div>
 <div th:replace="fragm.html :: home"></div>
+
+<div id="col-full">
+
+    <th:block class="box" th:each="product : ${products}">
+        <div class="product-box">
+            <img id="image" th:src="@{${product.photosImagePath}}" width="120"/>
+            <h10 class="model-box" th:text="${'Model: ' + product.name}"></h10>
+            <div>
+                <h10 class="text" th:text="${'EAN: ' + product.codeEAN}"></h10>
+                <h10 class="text" th:text="${'Amount: ' + product.amount}"></h10>
+                <h10 class="text" th:text="${'Price: ' + product.price + ' $'}"></h10>
+                <a th:if="${isLogged == true}" th:href="@{/addToBasket/{kodEAN}(kodEAN=${product.codeEAN})}" class="icon-shopping-cart"></a>
+                <a th:if="${role == 'ADMIN'}" th:href="@{/edit/{kodEAN}(kodEAN=${product.codeEAN})}" class="icon-edit"></a>
+            </div>
+        </div>
+    </th:block>
+</div>
+
 <div th:replace="fragm.html :: footer"></div>
 
 <div id="preloader">

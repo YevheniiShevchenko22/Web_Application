@@ -40,7 +40,10 @@ public class RunController {
 
     @GetMapping("/main")
     public String main(Model model){
+        List<Product> products = this.storeRepository.getAllProduct();
+        model.addAttribute("products", products);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
+        model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
         return "main";
     }
 

@@ -32,4 +32,23 @@ public class UserRepository implements IUserRepository {
         }
         return null;
     }
+
+    @Override
+    public boolean register(User user) {
+        if (isUserInDB(user.getLogin())){
+            return false;
+        }
+
+        this.users.add(user);
+        return true;
+    }
+    
+    private boolean isUserInDB(String login){
+        for (User user: users ) {
+            if (user.getLogin().equals(login)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

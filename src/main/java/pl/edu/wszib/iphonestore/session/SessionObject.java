@@ -2,7 +2,11 @@ package pl.edu.wszib.iphonestore.session;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
+import pl.edu.wszib.iphonestore.model.Product;
 import pl.edu.wszib.iphonestore.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yevhenii Shevchenko at 12/15/20
@@ -13,6 +17,8 @@ import pl.edu.wszib.iphonestore.model.User;
 public class SessionObject {
 
     private User loggedUser = null;
+    private String info = null;
+    private final List<Product> bascket = new ArrayList<>();
 
     public User getLoggedUser() {
         return loggedUser;
@@ -25,4 +31,32 @@ public class SessionObject {
     public boolean isLogged(){
         return this.loggedUser != null;
     }
+
+    public String getInfo() {
+        String temp = this.info;
+        this.info = null;
+        return temp;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void addToBasked(Product product){
+        for (Product productFromBasket : this.bascket){
+            if(productFromBasket.getCodeEAN().equals(product.getCodeEAN())){
+                productFromBasket.setAmount(productFromBasket.getAmount() + 1);
+                return;
+            }
+        }
+
+        product.setAmount(1);
+        this.bascket.add(product);
+    }
+
+    public List<Product> getBasked() {
+        return bascket;
+    }
 }
+
+

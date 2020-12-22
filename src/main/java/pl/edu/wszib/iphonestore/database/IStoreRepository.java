@@ -11,4 +11,5 @@ import java.util.List;
 public interface IStoreRepository {
 
     List<Product> getAllProduct();
+    Product getProductByCodeEAN(String codeEAN);
 }

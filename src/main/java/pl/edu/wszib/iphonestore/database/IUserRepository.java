@@ -8,4 +8,5 @@ import pl.edu.wszib.iphonestore.model.User;
  **/
 public interface IUserRepository {
     User authenticate(User user);
+    boolean register(User user);
 }

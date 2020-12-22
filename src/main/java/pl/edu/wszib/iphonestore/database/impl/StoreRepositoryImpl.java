@@ -23,32 +23,38 @@ public class StoreRepositoryImpl implements IStoreRepository {
                 "IPhone X",
                 "12345678",
                 30,
-                "architecture.jpg"));
+                "architecture.jpg",
+                800.99));
         this.products.add(new Product(2,
                 "IPhone 11",
                 "12345567",
                 20,
-                "minimalismo.jpg"));
+                "minimalismo.jpg",
+                850.75));
         this.products.add(new Product(3,
                 "IPhone 11 Pro Max",
                 "12345677",
                 25,
-                "salad.jpg"));
+                "salad.jpg",
+                1200.99));
         this.products.add(new Product(4,
                 "IPhone SE",
                 "12334567",
                 50,
-                "shutterbug.jpg"));
+                "shutterbug.jpg",
+                500.00));
         this.products.add(new Product(5,
                 "IPhone 12 Pro",
                 "12234567",
                 32,
-                "skaterboy.jpg"));
+                "skaterboy.jpg",
+                1500.00));
         this.products.add(new Product(6,
                 "IPhone XR",
                 "11334567",
                 46,
-                "yellowwall.jpg"));
+                "yellowwall.jpg",
+                1000.49));
     }
 
 
@@ -56,5 +62,16 @@ public class StoreRepositoryImpl implements IStoreRepository {
     @Override
     public List<Product> getAllProduct() {
         return this.products;
+    }
+
+    @Override
+    public Product getProductByCodeEAN(String codeEAN) {
+        for(Product product: this.products){
+            if (product.getCodeEAN().equals(codeEAN)){
+                return product;
+            }
+        }
+
+        return null;
     }
 }

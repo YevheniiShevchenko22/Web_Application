@@ -2,18 +2,10 @@
     position: relative;
     display: inline-block; /* Make the width of box same as image */
 }
-.box .text {
-    position: absolute;
-    z-index: 999;
-    left: 0;
-    right: 0;
-    top: 40%; /* Adjust this value to move the positioned div up and down */
-    text-align: center;
-    width: 60%; /* Set the width of the positioned div */
-    display: block;
-    margin-left: 30px;
-    margin-right: auto;
-
+.text {
+    color: #0099CC;
+    margin: auto 30px;
+    display: inline-block;
 }
 
 img {
@@ -23,8 +15,8 @@ img {
     width: 40%;
 }
 h10{
-    text-align: center;
-    margin-left: 5px;
+    color: #0099CC;
+    margin-left: auto;
     margin-right: auto;
     font-size: 2rem;
     line-height: 5rem;
@@ -33,18 +25,41 @@ h10{
 .product-box{
     width: 80%;
     margin: 20px auto;
+    text-align: center;
 }
 
 .model-box{
     text-align: center;
-    margin-left: 100px;
     font-size: 2rem;
     line-height: 5rem;
-    text-align: center;
+    color: #0099CC;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .info-box div{
-    display: inline-block;
-    margin-left: 150px;
-    text-align: center;
+    color: #0099CC;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.icon-shopping-cart{
+    content: "\e9b0";
+    width: 40px;
+    height: 40px;
+    float: right;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.icon-edit {
+    content: "\e93a";
+    width: 40px;
+    height: 40px;
+    float: right;
+    display: inline-block;
+    margin-top: 15px;
+}
+
