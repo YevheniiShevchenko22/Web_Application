@@ -13,7 +13,7 @@
 <header th:fragment="header">
 
     <div class="header-logo">
-        <a href="index.html">Iphone Store</a>
+        <a href="/main">Iphone Store</a>
     </div>
 
     <a id="header-menu-trigger" href="#0">
@@ -34,7 +34,8 @@
             <li><a class="scrolleasy" href="/logout" title="" th:if="${isLogged == true}">Logout</a></li>
             <li><a class="scrolleasy" href="/login" title="" th:if="${isLogged == false}">Login</a></li>
             <li><a class="scrolleasy" href="/basket" title="" th:if="${isLogged == true}">Basket</a></li>
-            <li><a class="scrolleasy" href="/register" title="">Registration</a></li>
+            <li><a class="scrolleasy" href="/register" title="" th:if="${isLogged == false}">Registration</a></li>
+            <li><a class="scrolleasy" href="/add" title="" th:if="${isLogged == true}">Add Product</a></li>
         </ul>
 
         <p class="sponsor-text">

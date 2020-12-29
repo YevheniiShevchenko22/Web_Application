@@ -44,7 +44,7 @@ public class SessionObject {
 
     public void addToBasked(Product product){
         for (Product productFromBasket : this.bascket){
-            if(productFromBasket.getCodeEAN().equals(product.getCodeEAN())){
+            if(productFromBasket.getId() == product.getId()){
                 productFromBasket.setAmount(productFromBasket.getAmount() + 1);
                 return;
             }

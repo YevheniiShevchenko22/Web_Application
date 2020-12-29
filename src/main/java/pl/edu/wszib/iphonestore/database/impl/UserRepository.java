@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Yevhenii Shevchenko at 12/14/20
  * Project name: iphonestore
  **/
-@Component
+
 public class UserRepository implements IUserRepository {
 
     private final List<User> users = new ArrayList<>();

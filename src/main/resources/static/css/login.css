@@ -1,6 +1,6 @@
 #login-form {
     width: 80%;
-    margin: 70px auto;
+    margin: 100px auto;
 }
 #login-form input[type="text"] {
     width: 80%;
@@ -9,6 +9,7 @@
     font-size: 26px;
     padding: 5px;
     text-align: center;
+    background-color: #A5A5A5;
 }
 #login-form input[type="password"] {
     width: 80%;
@@ -17,6 +18,7 @@
     font-size: 26px;
     padding: 5px;
     text-align: center;
+    background-color: #A5A5A5;
 }
 #login-form input[type="submit"] {
     color: #0099CC; /* Text color */
@@ -31,10 +33,16 @@
     background-color: black;
 }
 #register-link {
-    color: aquamarine; /* Text color */
+    font-family: "montserrat-bold", sans-serif;
+    color: #0099CC; /* Text color */
+    float: right;
+    margin-top: -50px;
+    margin-left: 60px;
+    width: 25%;
 }
 
 .bottom-login{
     display: inline-block;
+    margin-left: 80px;
     width: 80%;
 }

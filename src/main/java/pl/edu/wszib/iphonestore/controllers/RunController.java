@@ -47,26 +47,10 @@ public class RunController {
         return "main";
     }
 
-    @GetMapping("/product")
-    public String product(Model model){
-        List<Product> products = this.storeRepository.getAllProduct();
-        model.addAttribute("products", products);
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-        return "product";
-    }
-
     @GetMapping("/about")
     public String about(Model model){
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "about";
-    }
-
-    @GetMapping("/store")
-    public String store(Model model){
-        List<Product> products = this.storeRepository.getAllProduct();
-        model.addAttribute("products", products);
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-        return "store";
     }
 
     @GetMapping("/contact")

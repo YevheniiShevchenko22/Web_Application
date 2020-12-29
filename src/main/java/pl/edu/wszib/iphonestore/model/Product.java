@@ -1,10 +1,6 @@
 package pl.edu.wszib.iphonestore.model;
 
-
-//import javax.persistence.Transient;
-import javax.persistence.Entity;
 import java.beans.Transient;
-import java.io.InputStream;
 
 /**
  * Created by Yevhenii Shevchenko at 12/10/20
@@ -83,7 +79,7 @@ public class Product {
     public String getPhotosImagePath() {
         if (pic == null || id == null) return null;
 
-        return "/images/portfolio/" + id + "/" + pic;
+        return "/images/product/" + pic;
     }
 
     public Product clone(){

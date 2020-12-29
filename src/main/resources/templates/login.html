@@ -31,15 +31,15 @@
 
 <!-- favicons
  ================================================== -->
-<link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
-<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
 
 <body id="top">
 
 <div th:replace="fragm.html :: header"></div>
-<div th:replace="fragm.html :: home"></div>
+
 
 <form id="login-form" method="post">
     <input type="text" placeholder="Login" th:field="*{userModel.login}">
@@ -48,7 +48,6 @@
         <input type="submit" value="Login">
     </div>
     <a href="/register" id="register-link">Registration</a>
-
 </form>
 
 <div th:replace="fragm.html :: footer"></div>

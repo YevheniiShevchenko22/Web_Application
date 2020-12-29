@@ -16,14 +16,14 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/vendor.css">
-<link rel="stylesheet" href="css/main.css">
-
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/vendor.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/edit.css">
 <!-- script
 ================================================== -->
-<script src="js/modernizr.js"></script>
-<script src="js/pace.min.js"></script>
+<script src="/js/modernizr.js"></script>
+<script src="/js/pace.min.js"></script>
 
 <!-- favicons
  ================================================== -->
@@ -35,30 +35,19 @@
 <body id="top">
 
 <div th:replace="fragm.html :: header"></div>
-<div th:replace="fragm.html :: home"></div>
+<!--<div th:replace="fragm.html :: home"></div>-->
 
-<!-- about
-   ================================================== -->
-<section id="about">
+<form method="post" id="edit-form">
 
-    <div class="row about-wrap">
-        <div class="col-full">
+<!--    <input type="text" th:text="${product.pic}">-->
+    <img id="image" th:src="@{${product.photosImagePath}}" width="120"/>
+    <input type="text" th:field="*{product.name}">
+    <input type="text" th:field="*{product.codeEAN}">
+    <input type="text" th:field="*{product.amount}">
+    <input type="text" th:field="*{product.price}">
 
-            <div class="about-profile-bg"></div>
-
-            <div class="intro">
-                <h3 class="animate-this">About Us</h3>
-                <p class="lead animate-this"><span>Infinity</span> is a creative digital agency based in Manila, Philippines. We are composed of creative designers and experienced developers.</p>
-            </div>
-
-        </div> <!-- end col-full  -->
-    </div> <!-- end about-wrap  -->
-
-</section> <!-- end about -->
-
-
-<!-- about
-================================================== -->
+    <input type="submit" value="Edit">
+</form>
 
 <div th:replace="fragm.html :: footer"></div>
 
@@ -68,9 +57,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/jquery-2.1.3.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 

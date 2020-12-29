@@ -27,6 +27,10 @@ public class BasketController {
 
     @GetMapping("/basket")
     public String basket(Model model){
+        if (!this.sessionObject.isLogged()){
+            return "redirect:/login";
+        }
+
         model.addAttribute("products", this.sessionObject.getBasked());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         double sum = 0;
@@ -35,13 +39,19 @@ public class BasketController {
             sum = sum + product.getPrice()* product.getAmount();
         }
         model.addAttribute("total", sum);
+
         return "basket";
     }
 
-    @GetMapping("/addToBasket/{codeEAN}")
-    public String addToBasket(@PathVariable String codeEAN){
-        Product product = this.storeRepository.getProductByCodeEAN(codeEAN);
-        this.sessionObject.addToBasked(product.clone());
+    @GetMapping("/addToBasket/{id}")
+    public String addToBasket(@PathVariable int id){
+        if (!this.sessionObject.isLogged()){
+            return "redirect:/login";
+        }
+
+        Product product = this.storeRepository.getProductById(id);
+        this.sessionObject.addToBasked(product);
+
         return "redirect:/main";
     }
 }

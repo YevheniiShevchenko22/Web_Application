@@ -27,8 +27,8 @@
 
     <!-- favicons
      ================================================== -->
-    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -47,8 +47,8 @@
                 <h10 class="text" th:text="${'EAN: ' + product.codeEAN}"></h10>
                 <h10 class="text" th:text="${'Amount: ' + product.amount}"></h10>
                 <h10 class="text" th:text="${'Price: ' + product.price + ' $'}"></h10>
-                <a th:if="${isLogged == true}" th:href="@{/addToBasket/{kodEAN}(kodEAN=${product.codeEAN})}" class="icon-shopping-cart"></a>
-                <a th:if="${role == 'ADMIN'}" th:href="@{/edit/{kodEAN}(kodEAN=${product.codeEAN})}" class="icon-edit"></a>
+                <a th:if="${isLogged == true}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="icon-shopping-cart"></a>
+                <a th:if="${role == 'ADMIN'}" th:href="@{/edit/{id}(id=${product.id})}" class="icon-edit"></a>
             </div>
         </div>
     </th:block>

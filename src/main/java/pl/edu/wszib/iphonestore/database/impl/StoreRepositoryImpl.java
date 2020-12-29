@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Yevhenii Shevchenko at 12/10/20
  * Project name: iphonestore
  **/
-@Component
+
 public class StoreRepositoryImpl implements IStoreRepository {
     private final List<Product> products = new ArrayList<>();
     //IOUtils.toByteArray(in)
@@ -73,5 +73,20 @@ public class StoreRepositoryImpl implements IStoreRepository {
         }
 
         return null;
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+
+    }
+
+    @Override
+    public Product getProductById(int id) {
+        return null;
+    }
+
+    @Override
+    public void save(Product product) {
+
     }
 }

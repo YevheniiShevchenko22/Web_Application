@@ -19,37 +19,36 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/vendor.css">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/vendor.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/register.css">
 
 <!-- script
 ================================================== -->
-<script src="js/modernizr.js"></script>
-<script src="js/pace.min.js"></script>
+<script src="/js/modernizr.js"></script>
+<script src="/js/pace.min.js"></script>
 
 <!-- favicons
  ================================================== -->
-<link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
-<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
 
 <body id="top">
 
 <div th:replace="fragm.html :: header"></div>
-<div th:replace="fragm.html :: home"></div>
 
-<form id="register-form" method="post" onsubmit="return validateRegister()">
-    <p th:if="${info}" th:text="${info}" id="error-panel"></p>
-    <input type="text" placeholder="Login" th:field="*{registerModel.login}" id ="login">
-    <input type="password" placeholder="Password" th:field="*{registerModel.pass}" id="pass">
-    <input type="password" placeholder="Cofirm Password" th:field="*{registerModel.pass}" id="pass2">
-    <input type="submit" value="Submit">
-
-
-</form>
+<div class="register-form">
+    <form id="register-form" method="post" onsubmit="return validateRegister()">
+        <p th:if="${info}" th:text="${info}" id="error-panel"></p>
+        <input type="text" placeholder="Login" th:field="*{registerModel.login}" id="login">
+        <input type="password" placeholder="Password" th:field="*{registerModel.pass}" id="pass">
+        <input type="password" placeholder="Cofirm Password" th:field="*{registerModel.pass2}" id="pass2">
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 <div th:replace="fragm.html :: footer"></div>
 
@@ -59,10 +58,10 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
-<script src="js/registerValidator.js"></script>
+<script src="/js/jquery-2.1.3.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/registerValidator.js"></script>
 
 </body>
 

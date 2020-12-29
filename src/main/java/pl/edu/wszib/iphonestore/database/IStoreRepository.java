@@ -12,4 +12,9 @@ public interface IStoreRepository {
 
     List<Product> getAllProduct();
     Product getProductByCodeEAN(String codeEAN);
+    void updateProduct(Product product);
+
+    Product getProductById(int id);
+
+    void save(Product product);
 }
