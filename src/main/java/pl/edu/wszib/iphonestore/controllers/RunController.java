@@ -3,22 +3,11 @@ package pl.edu.wszib.iphonestore.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.edu.wszib.iphonestore.database.IStoreRepository;
-import pl.edu.wszib.iphonestore.model.Product;
+import pl.edu.wszib.iphonestore.service.IStoreService;
 import pl.edu.wszib.iphonestore.session.SessionObject;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-
 /**
  * Created by Yevhenii Shevchenko at 12/9/20
  * Project name: iphonestore
@@ -28,7 +17,7 @@ import java.util.List;
 public class RunController {
 
     @Autowired
-    IStoreRepository storeRepository;
+    IStoreService storeService;
 
     @Resource
     SessionObject sessionObject;
@@ -40,10 +29,11 @@ public class RunController {
 
     @GetMapping("/main")
     public String main(Model model){
-        List<Product> products = this.storeRepository.getAllProduct();
-        model.addAttribute("products", products);
+
+        model.addAttribute("products", this.storeService.getAllProducts());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
+
         return "main";
     }
 
@@ -58,15 +48,5 @@ public class RunController {
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "contact";
     }
-
-    /*@PostMapping("/products/show")
-    public String show(@ModelAttribute Product product,
-                       RedirectAttributes ra,
-                       @RequestParam("fileImage")MultipartFile multipartFile) throws IOException{
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setPic(fileName);
-
-        return "redirect:product";
-    }*/
 
 }

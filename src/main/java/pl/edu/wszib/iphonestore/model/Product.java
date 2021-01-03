@@ -1,18 +1,53 @@
 package pl.edu.wszib.iphonestore.model;
 
+import javax.persistence.*;
 import java.beans.Transient;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by Yevhenii Shevchenko at 12/10/20
  * Project name: iphonestore
  **/
 
+@Entity(name = "Product")
+@Table(name = "tproduct")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "varchar(50)"
+    )
     private String name;
+
+    @Column(
+            name = "codeEAN",
+            nullable = false,
+            columnDefinition = "varchar(15)"
+    )
     private String codeEAN;
+
+    @Column(
+            name = "amount"
+    )
     private Integer amount;
+
+    @Column(
+            name = "pic",
+            columnDefinition = "varchar(50)"
+    )
     private String pic;
+
+    @Column(
+            name = "price",
+            nullable = false,
+            columnDefinition = "double"
+    )
     private double price;
 
     public Product() {

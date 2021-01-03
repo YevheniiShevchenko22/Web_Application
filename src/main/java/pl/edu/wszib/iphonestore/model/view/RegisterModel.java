@@ -1,6 +1,5 @@
 package pl.edu.wszib.iphonestore.model.view;
 
-import pl.edu.wszib.iphonestore.model.Role;
 import pl.edu.wszib.iphonestore.model.User;
 
 /**
@@ -48,7 +47,7 @@ public class RegisterModel {
     }
 
     public User toUser(RegisterModel registerModel){
-        return new User(1, registerModel.getLogin(), registerModel.getPass(), Role.USER);
+        return new User(1, registerModel.getLogin(), registerModel.getPass(), User.Role.USER);
     }
 }
 

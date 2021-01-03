@@ -35,7 +35,7 @@
             <li><a class="scrolleasy" href="/login" title="" th:if="${isLogged == false}">Login</a></li>
             <li><a class="scrolleasy" href="/basket" title="" th:if="${isLogged == true}">Basket</a></li>
             <li><a class="scrolleasy" href="/register" title="" th:if="${isLogged == false}">Registration</a></li>
-            <li><a class="scrolleasy" href="/add" title="" th:if="${isLogged == true}">Add Product</a></li>
+            <li><a class="scrolleasy" href="/add" title="" th:if="${role == 'ADMIN' }">Add Product</a></li>
         </ul>
 
         <p class="sponsor-text">

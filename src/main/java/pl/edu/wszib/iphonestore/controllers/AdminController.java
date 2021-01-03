@@ -3,14 +3,11 @@ package pl.edu.wszib.iphonestore.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.edu.wszib.iphonestore.database.IStoreRepository;
-import pl.edu.wszib.iphonestore.model.FileUploadUtil;
 import pl.edu.wszib.iphonestore.model.Product;
-import pl.edu.wszib.iphonestore.model.Role;
+import pl.edu.wszib.iphonestore.model.User;
+import pl.edu.wszib.iphonestore.service.IStoreService;
 import pl.edu.wszib.iphonestore.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -24,19 +21,19 @@ import java.io.IOException;
 public class AdminController {
 
     @Autowired
-    IStoreRepository storeRepository;
+    IStoreService storeService;
 
     @Resource
     SessionObject sessionObject;
 
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable int id, Model model){
-        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != Role.ADMIN){
+        if (!this.sessionObject.isLogged() || User.Role.valueOf(this.sessionObject.getLoggedUser().getRole()) != User.Role.ADMIN){
             return "redirect:/login";
         }
 
         //Product product = this.storeRepository.getProductByCodeEAN(codEAN);
-        Product product = this.storeRepository.getProductById(id);
+        Product product = this.storeService.getProductById(id);
 
         model.addAttribute("product", product);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
@@ -47,27 +44,22 @@ public class AdminController {
 
     @PostMapping("/edit/{id}")
     public String edit(@ModelAttribute Product product){
-        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != Role.ADMIN){
+        if (!this.sessionObject.isLogged() || User.Role.valueOf(this.sessionObject.getLoggedUser().getRole()) != User.Role.ADMIN){
             return "redirect:/login";
         }
 
-        Product productFromDB = this.storeRepository.getProductById(product.getId());
-        productFromDB.setName(product.getName());
-        productFromDB.setCodeEAN(product.getCodeEAN());
-        productFromDB.setAmount(product.getAmount());
-        productFromDB.setPrice(product.getPrice());
-
-        this.storeRepository.updateProduct(productFromDB);
+        this.storeService.updateProduct(product);
 
         return "redirect:/main";
     }
 
     @GetMapping("/add")
     public String newProduct(Model model){
-        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != Role.ADMIN){
+        if (!this.sessionObject.isLogged() || User.Role.valueOf(this.sessionObject.getLoggedUser().getRole()) != User.Role.ADMIN){
             return "redirect:/login";
         }
         model.addAttribute("newProduct", new Product());
+        model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
 
         return "add";
     }
@@ -76,15 +68,11 @@ public class AdminController {
     public String saveProduct(@ModelAttribute(name="productCreate") Product product,
                            @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
-        if (!this.sessionObject.isLogged() || this.sessionObject.getLoggedUser().getRole() != Role.ADMIN){
+        if (!this.sessionObject.isLogged() || User.Role.valueOf(this.sessionObject.getLoggedUser().getRole()) != User.Role.ADMIN){
             return "redirect:/login";
         }
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setPic(fileName);
-        storeRepository.save(product);
-        String uploadDir = "src/main/resources/static/images/product/";
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        this.storeService.saveProduct(product, multipartFile);
 
         return "redirect:/main";
     }

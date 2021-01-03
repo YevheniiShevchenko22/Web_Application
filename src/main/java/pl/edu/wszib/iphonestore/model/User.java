@@ -1,32 +1,60 @@
 package pl.edu.wszib.iphonestore.model;
 
 
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
+
 /**
  * Created by Yevhenii Shevchenko at 12/14/20
  * Project name: iphonestore
  **/
+
+@Entity(name = "User")
+@Table(name = "tuser")
 public class User {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer id;
+
+    @Column(
+            name = "login",
+            nullable = false,
+            length = 100
+    )
     private String login;
+
+    @Column(
+            name = "pass",
+            nullable = false,
+            length = 100
+    )
     private String pass;
-    private Role role;
+
+    @Column(
+            name = "role",
+            nullable = false,
+            columnDefinition = "varchar(10)"
+    )
+    private String role;
 
     public User() {
     }
 
-    public User(int id, String login, String pass, Role role) {
+    public User(Integer id, String login, String pass, Role role) {
         this.id = id;
         this.login = login;
         this.pass = pass;
-        this.role = role;
+        this.role = role.name();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,11 +74,17 @@ public class User {
         this.pass = pass;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
+
+    public enum Role {
+        USER,
+        ADMIN
+    }
+
 }

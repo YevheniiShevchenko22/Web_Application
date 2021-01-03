@@ -36,9 +36,8 @@
     font-family: "montserrat-bold", sans-serif;
     color: #0099CC; /* Text color */
     float: right;
-    margin-top: -50px;
-    margin-left: 60px;
-    width: 25%;
+    margin-top: 13px;
+    text-transform: uppercase ;
 }
 
 .bottom-login{

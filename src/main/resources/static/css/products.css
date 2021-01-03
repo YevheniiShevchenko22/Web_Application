@@ -1,0 +1,47 @@
+.product-box {
+    position: relative;
+    width: 70%;
+    margin: auto;
+}
+
+.image {
+    display: block;
+    width: 70%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #555555;
+}
+
+.product-box:hover .overlay {
+    opacity: 85%;
+}
+
+.product-box .text{
+    margin: 30px 15%;
+}
+
+.icon-shopping-cart {
+    content: "\e9b0";
+    margin: auto 10px;
+}
+
+.icon-edit {
+    content: "\e93a";
+    margin: auto 10px;
+}
+
+.icon{
+    float: right;
+    width: 100px;
+}

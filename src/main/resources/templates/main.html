@@ -41,16 +41,20 @@
 
     <th:block class="box" th:each="product : ${products}">
         <div class="product-box">
-            <img id="image" th:src="@{${product.photosImagePath}}" width="120"/>
-            <h10 class="model-box" th:text="${'Model: ' + product.name}"></h10>
-            <div>
-                <h10 class="text" th:text="${'EAN: ' + product.codeEAN}"></h10>
-                <h10 class="text" th:text="${'Amount: ' + product.amount}"></h10>
-                <h10 class="text" th:text="${'Price: ' + product.price + ' $'}"></h10>
-                <a th:if="${isLogged == true}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="icon-shopping-cart"></a>
-                <a th:if="${role == 'ADMIN'}" th:href="@{/edit/{id}(id=${product.id})}" class="icon-edit"></a>
+            <img id="image" th:src="@{${product.photosImagePath}}"/>
+            <div class="overlay">
+                <p class="text " th:text="${'Model: ' + product.name}"></p>
+                <p class="text" th:text="${'EAN: ' + product.codeEAN}"></p>
+                <p class="text" th:text="${'Amount: ' + product.amount}"></p>
+                <p class="text" th:text="${'Price: ' + product.price + ' $'}"></p>
+
+                <div class="icon">
+                    <a th:if="${isLogged == true}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="icon-shopping-cart"></a>
+                    <a th:if="${role == 'ADMIN'}" th:href="@{/edit/{id}(id=${product.id})}" class="icon-edit"></a>
+                </div>
             </div>
         </div>
+
     </th:block>
 </div>
 

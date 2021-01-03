@@ -42,20 +42,12 @@ public class SessionObject {
         this.info = info;
     }
 
-    public void addToBasked(Product product){
-        for (Product productFromBasket : this.bascket){
-            if(productFromBasket.getId() == product.getId()){
-                productFromBasket.setAmount(productFromBasket.getAmount() + 1);
-                return;
-            }
-        }
-
-        product.setAmount(1);
-        this.bascket.add(product);
-    }
-
     public List<Product> getBasked() {
         return bascket;
+    }
+
+    public void clearBasket(){
+        bascket.clear();
     }
 }
 

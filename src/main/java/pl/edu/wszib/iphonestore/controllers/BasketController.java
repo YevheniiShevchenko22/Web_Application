@@ -1,13 +1,11 @@
 package pl.edu.wszib.iphonestore.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import pl.edu.wszib.iphonestore.database.IStoreRepository;
-import pl.edu.wszib.iphonestore.model.Product;
+import pl.edu.wszib.iphonestore.service.IBasketService;
 import pl.edu.wszib.iphonestore.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -20,7 +18,7 @@ import javax.annotation.Resource;
 public class BasketController {
 
     @Autowired
-    IStoreRepository storeRepository;
+    IBasketService basketService;
 
     @Resource
     SessionObject sessionObject;
@@ -33,24 +31,19 @@ public class BasketController {
 
         model.addAttribute("products", this.sessionObject.getBasked());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
-        double sum = 0;
-        for (Product product :
-                this.sessionObject.getBasked()) {
-            sum = sum + product.getPrice()* product.getAmount();
-        }
-        model.addAttribute("total", sum);
+        model.addAttribute("total", this.basketService.calculateTotal());
 
         return "basket";
     }
 
     @GetMapping("/addToBasket/{id}")
     public String addToBasket(@PathVariable int id){
+
         if (!this.sessionObject.isLogged()){
             return "redirect:/login";
         }
 
-        Product product = this.storeRepository.getProductById(id);
-        this.sessionObject.addToBasked(product);
+        this.basketService.addBookByIdToBasket(id);
 
         return "redirect:/main";
     }
