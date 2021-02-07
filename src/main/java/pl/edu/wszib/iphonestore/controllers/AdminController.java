@@ -38,7 +38,6 @@ public class AdminController {
         model.addAttribute("product", product);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         model.addAttribute("role", this.sessionObject.isLogged() ? this.sessionObject.getLoggedUser().getRole().toString() : null);
-
         return "edit";
     }
 
@@ -47,7 +46,6 @@ public class AdminController {
         if (!this.sessionObject.isLogged() || User.Role.valueOf(this.sessionObject.getLoggedUser().getRole()) != User.Role.ADMIN){
             return "redirect:/login";
         }
-
         this.storeService.updateProduct(product);
 
         return "redirect:/main";

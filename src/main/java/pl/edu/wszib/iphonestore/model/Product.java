@@ -117,7 +117,20 @@ public class Product {
         return "/images/product/" + pic;
     }
 
-    public Product clone(){
-        return new Product(this.id,this.name, this.codeEAN, this.amount, this.pic, this.price);
+    public Product clone() {
+        return new Product(this.id, this.name, this.codeEAN, this.amount, this.pic, this.price);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", codeEAN='" + codeEAN + '\'' +
+                ", amount=" + amount +
+                ", pic='" + pic + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
